@@ -22,13 +22,6 @@ $canRewind = has_capability('moodle/course:manageactivities', $context);
 <!-- Add video upload form -->
 <?php if ($canRewind) { ?>
     <h2>Upload Video:</h2>
-   
-    <!-- <form action="upload_file.php" method="post" enctype="multipart/form-data">
-        <label for="file"><span>Filename:</span></label>
-        <input type="file" name="file" id="file" /> 
-        <br />
-        <input type="submit" name="submit" value="Submit" />
-    </form> -->
 
     <form action="upload_video.php" method="post" enctype="multipart/form-data">
          <input type="file" name="video" id="video">
@@ -39,11 +32,6 @@ $canRewind = has_capability('moodle/course:manageactivities', $context);
 <!-- Add subtitle upload form -->
 <?php if ($canRewind) { ?>
     <h2>Upload Subtitles:</h2>
-    <!-- <form action="upload_subtitle.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="subtitleFile" accept=".vtt" required>
-        <input type="hidden" name="video" value="<?php echo $video; ?>">
-        <input type="submit" value="Upload">
-    </form> -->
 
     <form action="upload_subtitle.php" method="post" enctype="multipart/form-data">
         <input type="file" id="subtitleFile" name="subtitleFile" accept=".vtt" required>
