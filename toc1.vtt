@@ -1,0 +1,689 @@
+WEBVTT
+
+00:00:00.120 --> 00:00:02.320
+it's the first lesson of theory of
+
+00:00:02.320 --> 00:00:04.640
+computation we're going to say hello
+
+00:00:04.640 --> 00:00:07.759
+with deterministic finite State automata
+
+00:00:07.759 --> 00:00:10.400
+let's start a lesson the transition
+
+00:00:10.400 --> 00:00:12.519
+system in this animation is called
+
+00:00:12.519 --> 00:00:16.400
+Tollgate nowadays instead of cash we are
+
+00:00:16.400 --> 00:00:18.520
+opening this kind of gates with active
+
+00:00:18.520 --> 00:00:21.600
+or passive radio waves but in our
+
+00:00:21.600 --> 00:00:24.199
+example we're going to consider using
+
+00:00:24.199 --> 00:00:27.599
+cash thus we'll learn how the cash based
+
+00:00:27.599 --> 00:00:30.279
+tollgates worked let's imagine you
+
+00:00:30.279 --> 00:00:33.600
+opened your gate with 25 cents in this
+
+00:00:33.600 --> 00:00:35.960
+lesson we will learn to turn every
+
+00:00:35.960 --> 00:00:39.000
+problem into a language problem so every
+
+00:00:39.000 --> 00:00:41.120
+coin will now represent the letters that
+
+00:00:41.120 --> 00:00:45.200
+make up a word for us for example 510
+
+00:00:45.200 --> 00:00:47.879
+and 25 cent coins will turn into letters
+
+00:00:47.879 --> 00:00:51.520
+a b and c now let's think mathematically
+
+00:00:51.520 --> 00:00:54.120
+about how we can open the gate first you
+
+00:00:54.120 --> 00:00:57.079
+can throw 5times 5 cents to open the
+
+00:00:57.079 --> 00:01:00.000
+gate this solution is perceived by the
+
+00:01:00.000 --> 00:01:02.719
+automaton as a string with five
+
+00:01:02.719 --> 00:01:07.200
+A's another solution is 5 + 10 + 10 it
+
+00:01:07.200 --> 00:01:11.240
+is perceived as ABB and so on thus our
+
+00:01:11.240 --> 00:01:13.200
+problem has been transformed into a
+
+00:01:13.200 --> 00:01:16.159
+language problem now we must figure out
+
+00:01:16.159 --> 00:01:19.680
+which words should be accepted but wait
+
+00:01:19.680 --> 00:01:22.000
+we have a problem you cannot use
+
+00:01:22.000 --> 00:01:24.560
+traditional programming methods here
+
+00:01:24.560 --> 00:01:27.880
+because automaton systems have no memory
+
+00:01:27.880 --> 00:01:30.479
+so you cannot use variables
+
+00:01:30.479 --> 00:01:33.439
+when the user puts to machine a new coin
+
+00:01:33.439 --> 00:01:35.920
+the system cannot remember how much coin
+
+00:01:35.920 --> 00:01:38.079
+has been thrown in total until that
+
+00:01:38.079 --> 00:01:40.759
+moment therefore the system cannot
+
+00:01:40.759 --> 00:01:42.880
+calculate how much more coins needs to
+
+00:01:42.880 --> 00:01:46.159
+be thrown to open the gate finite State
+
+00:01:46.159 --> 00:01:49.119
+automa use states to remember situations
+
+00:01:49.119 --> 00:01:52.000
+instead of variables here we have six
+
+00:01:52.000 --> 00:01:54.280
+circles and each circle represents a
+
+00:01:54.280 --> 00:01:57.039
+state if we want to solve the Tollgate
+
+00:01:57.039 --> 00:02:00.039
+problem with finite state automata we
+
+00:02:00.039 --> 00:02:02.119
+should see the coins thrown to open the
+
+00:02:02.119 --> 00:02:03.880
+gate as letters on the
+
+00:02:03.880 --> 00:02:06.920
+keyboard we will design a automaton to
+
+00:02:06.920 --> 00:02:09.360
+solve Tollgate Problem by transforming
+
+00:02:09.360 --> 00:02:10.680
+coins to
+
+00:02:10.680 --> 00:02:14.519
+letters first we need a set of States
+
+00:02:14.519 --> 00:02:17.360
+each state is used to remember something
+
+00:02:17.360 --> 00:02:19.800
+for example in the solution of Tollgate
+
+00:02:19.800 --> 00:02:23.120
+opening with 25 cents problem q0 is the
+
+00:02:23.120 --> 00:02:26.319
+initial state so we use it to remember
+
+00:02:26.319 --> 00:02:28.760
+that there is no money at the automaton
+
+00:02:28.760 --> 00:02:32.800
+yet q1 shows we have 5 Cents Only
+
+00:02:32.800 --> 00:02:36.319
+likewise Q2 is 10 cents thus you can
+
+00:02:36.319 --> 00:02:40.360
+comment Q3 and Q4 finally the Q5
+
+00:02:40.360 --> 00:02:43.879
+represents 25 cents which is our Target
+
+00:02:43.879 --> 00:02:45.879
+now we have defined the tasks of the
+
+00:02:45.879 --> 00:02:47.920
+states to use in our
+
+00:02:47.920 --> 00:02:51.319
+solution second we need an alphabet
+
+00:02:51.319 --> 00:02:53.440
+since each coin the user throws will
+
+00:02:53.440 --> 00:02:55.680
+correspond to a letter we must first
+
+00:02:55.680 --> 00:02:58.879
+Define an alphabet in map which symbol
+
+00:02:58.879 --> 00:03:02.239
+each coin Cor Corr responds to third we
+
+00:03:02.239 --> 00:03:04.519
+need to describe transitions among the
+
+00:03:04.519 --> 00:03:07.519
+defined States in fact it's easier to
+
+00:03:07.519 --> 00:03:10.000
+plan transitions once you've identified
+
+00:03:10.000 --> 00:03:12.720
+the tasks of the States since we're
+
+00:03:12.720 --> 00:03:14.920
+going to write a deterministic program
+
+00:03:14.920 --> 00:03:17.720
+anyway we have to represent each symbol
+
+00:03:17.720 --> 00:03:19.959
+in our alphabet as an arrow going out of
+
+00:03:19.959 --> 00:03:23.000
+each state note that we call the arrows
+
+00:03:23.000 --> 00:03:26.000
+as edges in graph Theory like the others
+
+00:03:26.000 --> 00:03:27.680
+there should be three edges that come
+
+00:03:27.680 --> 00:03:28.680
+out of
+
+00:03:28.680 --> 00:03:33.319
+q0 5 cents 10 cents and 25 cents we said
+
+00:03:33.319 --> 00:03:35.040
+that in our problem there are three
+
+00:03:35.040 --> 00:03:37.080
+exiting edges from each state in
+
+00:03:37.080 --> 00:03:39.720
+accordance with the alphabet but it is
+
+00:03:39.720 --> 00:03:41.920
+up to the programmer to determine which
+
+00:03:41.920 --> 00:03:45.480
+states they will lead to Fourth we have
+
+00:03:45.480 --> 00:03:48.280
+to Define where the system will start
+
+00:03:48.280 --> 00:03:50.480
+one of the states defined to solve the
+
+00:03:50.480 --> 00:03:52.640
+problem must be identified as start
+
+00:03:52.640 --> 00:03:56.319
+state or in other words initial state
+
+00:03:56.319 --> 00:03:58.920
+fifth we need to Define where the system
+
+00:03:58.920 --> 00:04:01.480
+will stop the states which should open
+
+00:04:01.480 --> 00:04:03.760
+the gate must be described as except
+
+00:04:03.760 --> 00:04:07.400
+state or in other words final State we
+
+00:04:07.400 --> 00:04:09.680
+now come to the formal definition of a
+
+00:04:09.680 --> 00:04:13.319
+finite automaton definition a finite
+
+00:04:13.319 --> 00:04:17.000
+automaton is a 5le m equals capital Q
+
+00:04:17.000 --> 00:04:20.000
+capital Sigma Delta lowercase Q capital
+
+00:04:20.000 --> 00:04:24.120
+F where capital Q is a finite set whose
+
+00:04:24.120 --> 00:04:26.840
+elements are called States capital Sigma
+
+00:04:26.840 --> 00:04:29.960
+is a finite set called the alphabet the
+
+00:04:29.960 --> 00:04:32.800
+elements of Sigma are called symbols
+
+00:04:32.800 --> 00:04:35.280
+Delta is a function defined as cartisian product
+
+00:04:35.280 --> 00:04:38.080
+of capital Q and capital Sigma
+
+00:04:38.080 --> 00:04:41.400
+goes capital Q called the transition
+
+00:04:41.400 --> 00:04:45.039
+function lowercase Q is an element of Q
+
+00:04:45.039 --> 00:04:47.680
+it is called the start state capital F
+
+00:04:47.680 --> 00:04:51.320
+is a subset of capital Q the elements of
+
+00:04:51.320 --> 00:04:54.240
+capital F are called except States you
+
+00:04:54.240 --> 00:04:56.199
+can think of the transition function
+
+00:04:56.199 --> 00:04:58.600
+Delta as being the program of the finite
+
+00:04:58.600 --> 00:05:00.479
+automaton
+
+00:05:00.479 --> 00:05:03.199
+it's our first example capital A is
+
+00:05:03.199 --> 00:05:06.000
+defined with w words so that W is a
+
+00:05:06.000 --> 00:05:08.199
+binary string containing an odd number
+
+00:05:08.199 --> 00:05:09.000
+of
+
+00:05:09.000 --> 00:05:12.160
+ones here because of the question our
+
+00:05:12.160 --> 00:05:15.600
+alphabet will be binary so capital Sigma
+
+00:05:15.600 --> 00:05:18.199
+includes zero and one only then we
+
+00:05:18.199 --> 00:05:20.680
+should find the States since the
+
+00:05:20.680 --> 00:05:22.560
+question does not deal with the letter
+
+00:05:22.560 --> 00:05:26.080
+zero we can focus on only letter one
+
+00:05:26.080 --> 00:05:28.479
+each letter one entered by the user will
+
+00:05:28.479 --> 00:05:30.880
+change the even status of the number of
+
+00:05:30.880 --> 00:05:34.440
+ones in the typed string because of the
+
+00:05:34.440 --> 00:05:37.199
+logic requested in the question it is
+
+00:05:37.199 --> 00:05:40.440
+sufficient to Define two states Q odd
+
+00:05:40.440 --> 00:05:43.199
+and Q even due to the nature of the
+
+00:05:43.199 --> 00:05:45.520
+problem Q even should be defined as the
+
+00:05:45.520 --> 00:05:48.520
+initial State as the user begins to
+
+00:05:48.520 --> 00:05:50.600
+enter symbols into the system from
+
+00:05:50.600 --> 00:05:52.919
+outside there may be a transition
+
+00:05:52.919 --> 00:05:55.639
+between States but this will depend on
+
+00:05:55.639 --> 00:05:58.639
+the problem here any zero symbol entered
+
+00:05:58.639 --> 00:06:01.400
+by the user does not require any state
+
+00:06:01.400 --> 00:06:04.199
+change but the symol one causes the
+
+00:06:04.199 --> 00:06:06.759
+states to change every time when we
+
+00:06:06.759 --> 00:06:08.840
+admit this solution to ourselves the
+
+00:06:08.840 --> 00:06:11.440
+transition diagram on the screen
+
+00:06:11.440 --> 00:06:14.400
+appears just as we can use tools such as
+
+00:06:14.400 --> 00:06:16.680
+Chopsticks other than Forks while eating
+
+00:06:16.680 --> 00:06:20.360
+we can also design finite state automa
+
+00:06:20.360 --> 00:06:22.960
+with different tools for now we will
+
+00:06:22.960 --> 00:06:25.800
+proceed with two tools transition
+
+00:06:25.800 --> 00:06:29.520
+diagram and table method in simple terms
+
+00:06:29.520 --> 00:06:31.960
+a transition diagram is a graphical
+
+00:06:31.960 --> 00:06:34.599
+representation of the table method in
+
+00:06:34.599 --> 00:06:37.360
+this example when the system starts up
+
+00:06:37.360 --> 00:06:39.919
+it boots up in the Q even State and for
+
+00:06:39.919 --> 00:06:42.599
+example if the user enters a zero symbol
+
+00:06:42.599 --> 00:06:45.720
+at that time the system understands that
+
+00:06:45.720 --> 00:06:48.680
+it must remain in the Q even State a
+
+00:06:48.680 --> 00:06:52.560
+second example I equals W so that W is a
+
+00:06:52.560 --> 00:06:56.479
+binary string containing 101 as a
+
+00:06:56.479 --> 00:06:59.720
+substring here when we reach a 101 one
+
+00:06:59.720 --> 00:07:02.960
+sequence we accept it this substring can
+
+00:07:02.960 --> 00:07:05.080
+be at beginning end or middle of the
+
+00:07:05.080 --> 00:07:07.639
+string we said that there is no memory
+
+00:07:07.639 --> 00:07:10.720
+in automa then we must design states
+
+00:07:10.720 --> 00:07:13.000
+that enable the system to remember these
+
+00:07:13.000 --> 00:07:14.599
+three consecutive
+
+00:07:14.599 --> 00:07:18.280
+symbols examine the situations below Q
+
+00:07:18.280 --> 00:07:20.800
+is the start state it means we have
+
+00:07:20.800 --> 00:07:24.039
+nothing q1 means the first symbol letter
+
+00:07:24.039 --> 00:07:27.960
+one came it made an alarm q1 to zero
+
+00:07:27.960 --> 00:07:31.000
+means the second symbol letter zero came
+
+00:07:31.000 --> 00:07:33.960
+it increases the alarm level
+
+00:07:33.960 --> 00:07:38.160
+q11 means the third symbol letter 1 came
+
+00:07:38.160 --> 00:07:41.360
+the automaton must accept the string now
+
+00:07:41.360 --> 00:07:44.039
+it's time to plan the initial State the
+
+00:07:44.039 --> 00:07:46.680
+first question is what State Should the
+
+00:07:46.680 --> 00:07:49.400
+initial State be could it be one of the
+
+00:07:49.400 --> 00:07:51.599
+situations that belong to the solution
+
+00:07:51.599 --> 00:07:54.720
+we have in mind or should we add a new
+
+00:07:54.720 --> 00:07:57.280
+situation after finding the answer to
+
+00:07:57.280 --> 00:07:59.800
+this question we will ask the following
+
+00:07:59.800 --> 00:08:02.159
+question have we planned an outgoing
+
+00:08:02.159 --> 00:08:04.080
+Edge labeled with each letter in the
+
+00:08:04.080 --> 00:08:07.120
+alphabet for each states of the solution
+
+00:08:07.120 --> 00:08:09.759
+we have in mind where should it go if
+
+00:08:09.759 --> 00:08:13.039
+the symbol zero appears if symbol one
+
+00:08:13.039 --> 00:08:15.879
+comes up where should it Go and the last
+
+00:08:15.879 --> 00:08:18.440
+question in what states do we meet the
+
+00:08:18.440 --> 00:08:21.400
+conditions required by the problem we
+
+00:08:21.400 --> 00:08:23.240
+will make the states where all
+
+00:08:23.240 --> 00:08:25.319
+conditions are met the except State and
+
+00:08:25.319 --> 00:08:28.759
+indicate this with a double lined Circle
+
+00:08:28.759 --> 00:08:32.279
+a third example I equals W is element of
+
+00:08:32.279 --> 00:08:35.320
+0 to one star so that W has a one in the
+
+00:08:35.320 --> 00:08:38.320
+third position from the left this
+
+00:08:38.320 --> 00:08:41.000
+problem is easier than the previous one
+
+00:08:41.000 --> 00:08:42.958
+because the first and the second letters
+
+00:08:42.958 --> 00:08:45.640
+are not important we can think at first
+
+00:08:45.640 --> 00:08:47.920
+the third letter from the start the
+
+00:08:47.920 --> 00:08:51.640
+first symbol can be zero or one also the
+
+00:08:51.640 --> 00:08:54.640
+second symbol can be 0 or one but that
+
+00:08:54.640 --> 00:08:57.399
+the third one must be one only then we
+
+00:08:57.399 --> 00:08:59.680
+will say this to the automaton we will
+
+00:08:59.680 --> 00:09:02.440
+Design if a symbol one comes as the
+
+00:09:02.440 --> 00:09:04.760
+third letter then go and accept stay and
+
+00:09:04.760 --> 00:09:08.040
+stay there otherwise go a reject State
+
+00:09:08.040 --> 00:09:10.720
+and stay there here we need to remember
+
+00:09:10.720 --> 00:09:12.800
+the sequence number of the letters up to
+
+00:09:12.800 --> 00:09:16.399
+the third letter thus we use at least
+
+00:09:16.399 --> 00:09:19.079
+four states to check the third symbol
+
+00:09:19.079 --> 00:09:21.920
+then we add a last state for rejecting
+
+00:09:21.920 --> 00:09:25.320
+that's all we need five states a fourth
+
+00:09:25.320 --> 00:09:29.680
+example a equals W element of zer one
+
+00:09:29.680 --> 00:09:32.320
+star so that W has a one in the third
+
+00:09:32.320 --> 00:09:35.240
+position from the right here the last
+
+00:09:35.240 --> 00:09:37.800
+three letters are important and we need
+
+00:09:37.800 --> 00:09:40.720
+remember them all therefore we need
+
+00:09:40.720 --> 00:09:43.200
+eight different states eight states
+
+00:09:43.200 --> 00:09:47.120
+starting with q 000000 and going up to
+
+00:09:47.120 --> 00:09:50.240
+q11 since each new symbol from the user
+
+00:09:50.240 --> 00:09:53.160
+is added to the right of the string the
+
+00:09:53.160 --> 00:09:55.120
+last three letters of the string we have
+
+00:09:55.120 --> 00:09:57.040
+will change and therefore the state in
+
+00:09:57.040 --> 00:10:00.200
+the design may have to change to another
+
+00:10:00.200 --> 00:10:03.920
+state after determination of the states
+
+00:10:03.920 --> 00:10:06.880
+designing the transitions will be easier
+
+00:10:06.880 --> 00:10:09.200
+of course for someone new to the subject
+
+00:10:09.200 --> 00:10:11.279
+this question may seem difficult at
+
+00:10:11.279 --> 00:10:14.320
+first glance please try to understand
+
+00:10:14.320 --> 00:10:16.800
+the transitions by checking them one by
+
+00:10:16.800 --> 00:10:19.640
+one if you do not understand why the
+
+00:10:19.640 --> 00:10:21.800
+transitions are defined this way or if
+
+00:10:21.800 --> 00:10:23.200
+the transition
+
+00:10:23.200 --> 00:10:26.000
+diagram still seems complicated to you
+
+00:10:26.000 --> 00:10:28.360
+go back to the previous step you can
+
+00:10:28.360 --> 00:10:30.760
+review our Solution on how we determine
+
+00:10:30.760 --> 00:10:32.519
+the total number of
+
+00:10:32.519 --> 00:10:36.839
+states that's all thanks for
+
+00:10:37.279 --> 00:10:40.279
+listening
+
